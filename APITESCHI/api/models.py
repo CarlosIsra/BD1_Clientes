@@ -55,3 +55,18 @@ class InteraccionCliente (models.Model):
     FKEtiquetaCliente = models.ForeignKey(EtiquetaCliente, on_delete=models.CASCADE,db_column='FKEtiquetaCliente')
     class Meta:
         db_table = 'InteraccionCliente'
+    
+class Compra  (models.Model):
+     idActividades = models.IntegerField(primary_key=True, db_column='idActividades')
+     FKActividades_Compra = models.ForeignKey(Actividades_Compra, on_delete=models.CASCADE,db_column='Actividades_Compra')
+     Fecha = models.DateField (db_column='Fecha')
+     FKclientes = models.ForeignKey(clientes, on_delete=models.CASCADE,db_column='FKclientes')
+     FKEstado = models.ForeignKey(Estado, on_delete=models.CASCADE,db_column='FKEstado')
+     class Meta:
+        db_table = 'Compra'
+        
+class Direccion_Clientes (models.Model):
+    idDireccion_Clientes  = models.IntegerField(primary_key=True, db_column='Direccion_Clientes')
+    FKidDireccion = models.ForeignKey(direccion, on_delete=models.CASCADE,db_column='FKidDireccion')
+    FKclientes = models.ForeignKey(clientes, on_delete=models.CASCADE,db_column='FKclientes')
+    
